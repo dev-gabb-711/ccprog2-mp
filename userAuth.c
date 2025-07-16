@@ -1,26 +1,61 @@
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
+#include "header.h"
 
 typedef char input[100];
+
+
+void encryptData(info *data)
+{   
+	int i = 0;
+    int length = strlen(data->password[0]);
+    input encrypt;
+
+	while(i< length)
+	{
+	  strcpy(encrypt,data->password);
+          if(strcmp(encrypt,"A")== 0 || )
+
+	}
+
+	
+
+
+
+
+}
+
+
+void dencryptData()
+{
+    // Assign a value for letter
+    
+
+	// fprintf(fp, "%s\n", personal.encrypted_Ps);
+
+
+
+
+}
 
 void signUp()
 {
 	FILE *fp;
+	info personal;
+	// input appended;
+	
 	fp = fopen("users.txt", "a");
-	input username, password; // encryptUser, encryptPW;
 	
 	if (fp != NULL)
 	{
-		printf("\033[33mSIGN UP\033[0m\n");
-		printf("Enter Username: ");
-		scanf("%s", username);
-		printf("Enter Password: ");
-		scanf("%s", password);
+	  printf("\033[33mSIGN UP\033[0m\n");
+	  printf("Enter Username: "); 
+	  scanf("%s", personal.user_name);
+	  printf("Enter Password: ");
+	  scanf("%s", personal.password);
+	  
+	  encryptData(&personal); // Encrypts the data
+
+	  fprintf(fp, "%s\n", personal.encrypted_Ps);
 		
-		printf("\n");
-		
-		fprintf(fp, "%s %s\n", username, password);
 		int close = fclose(fp);
 		if (close == 0)
 		{
@@ -37,8 +72,9 @@ void signUp()
 	}
 }
 
-void logIn()
+void logIn()  // Required to use the encrypted string
 {
+
 	FILE *fp;
 	fp = fopen("users.txt", "r");
 	input username, password, inputUser, inputPass;
@@ -84,7 +120,7 @@ void logIn()
 	}
 }
 
-void forgotPassword()
+void forgotPassword() // Required to use the encrypted string
 {
 	FILE *fp;
 	fp = fopen("users.txt", "a");
@@ -104,7 +140,7 @@ void forgotPassword()
 				found = 1;
 			}
 		}
-		fclose(fp);
+		int close = fclose(fp);
 		if (close == 0)
 		{
 			if (found == 1)
