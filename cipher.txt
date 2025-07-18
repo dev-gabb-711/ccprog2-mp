@@ -1,0 +1,48 @@
+Assign Letter Combination (For Encryption)
+
+Note: 
+This .txt file is created for documentation purposes for the encryption of data info.
+The assignment of letters (from the English alphabet) is randomly based on the Letter Frequency Count 
+graph which will be used for the Monoalphabetic Cypher.
+
+Alphabetical (The conversion of 'A' and 'a' is similar in both upper & lower cases)
+
+A = 'M'
+B = 'S'
+C = 'W'
+D = 'U'
+E = 'L'
+F = 'R'
+G = 'E'
+H = 'Y'
+I = 'T'
+J = 'I'
+K = 'X'
+L = 'K'
+M = 'J'
+N = 'P'
+O = 'V'
+P = 'B'
+Q = 'O'
+R = 'Q'
+S = 'C'
+T = 'F'
+U = 'Z'
+V = 'G'
+W = 'H'
+X = 'N'
+Y = 'D'
+Z = 'A'
+
+
+Special Characters
+! = 
+@ = 
+# = 
+$ = 
+% =
+^ = 
+& =
+* =  
++ = 
+- =  
