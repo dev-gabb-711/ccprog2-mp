@@ -4,21 +4,21 @@
 void encryptUser(info *data)
 {   
 	input temp = "";
-	input encrypted ="";
+	input encrypted = "";
 	int i = 0; 
 	int j = 0;
 	int found = 0;
 
-	equivalence text[71] = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G",
+	equivalence text[73] = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G",
 		                    "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m",
 							"N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T",
 							"t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z",
-							"!", "#", "$", "%", "*", "&", "+", "?", "_", "1", "2", "3", "4",
-							"5", "6", "7", "8", "9", "0"}; 	
+							"!", "#", "$", "%", "*", "&", "+", "?", "_", ".", "1", "2", "3",
+							"4", "5", "6", "7", "8", "9", "0"}; 	
 
 	int length = strlen(data->user_name);
 
-	int dupe = 71;
+	int dupe = sizeof(text) / sizeof(text[0]);
 
 	while(j < length && i < dupe)
 	{
@@ -28,7 +28,7 @@ void encryptUser(info *data)
 	  {
          int *lIndex = &i;
    
-	    letter_encrypt(lIndex, encrypted);
+	    letter_encrypter(lIndex, encrypted);
          
         j++;
 		i = 0;
@@ -44,8 +44,6 @@ void encryptUser(info *data)
 
 	  if(j == length && found == 1)
 	  {
-        strcat(encrypted, "\0");
-
 		strcpy(data->encrypted_User, encrypted);
 	  }
 
@@ -61,18 +59,19 @@ void encryptPS(info *data)
 	int i = 0; 
 	int j = 0;
 	int found = 0;
-	equivalence text[71] = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G",
+
+    equivalence text[73] = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", 
 		                    "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m",
 							"N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T",
 							"t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z",
-							"!", "#", "$", "%", "*", "&", "+", "?", "_", "1", "2", "3", "4",
-							"5", "6", "7", "8", "9", "0"}; 	
-
-
+							"!", "#", "$", "%", "*", "&", "+", "?", "_", ".", "1", "2", "3",
+							"4", "5", "6", "7", "8", "9", "0"}; 
 
 	int length = strlen(data->password);
 
-	int dupe = 71;
+	int dupe = sizeof(text) / sizeof(text[0]);
+
+	printf("%d\n", dupe);
 
 	while(j < length && i < dupe)
 	{
@@ -82,7 +81,7 @@ void encryptPS(info *data)
 	  {
          int *lIndex = &i;
    
-	    letter_encrypt(lIndex, encrypted);
+	    letter_encrypter(lIndex, encrypted);
          
         j++;
 		i = 0;
@@ -98,8 +97,6 @@ void encryptPS(info *data)
 
 	  if(j == length && found == 1)
 	  {
-        strcat(encrypted, "\0");
-
 		strcpy(data->encrypted_Ps, encrypted);
 	  }
 
@@ -108,12 +105,104 @@ void encryptPS(info *data)
 }
 
 
-void dencryptData()
+void dencryptUser(info *data)
 {
-    // Assign a value for letter
-    
+	input temp = "";
+	input dencrypted ="";
+	int i = 0; 
+	int j = 0;
+	int found = 0;
+	equivalence text[73] = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", 
+		                    "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m",
+							"N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T",
+							"t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z",
+							"!", "#", "$", "%", "*", "&", "+", "?", "_", ".", "1", "2", "3",
+							"4", "5", "6", "7", "8", "9", "0"}; 		
 
-	// fprintf(fp, "%s\n", personal.encrypted_Ps);
+
+
+	int length = strlen(data->encrypted_User);
+
+	int dupe = sizeof(text) / sizeof(text[0]);
+
+	while(j < length && i < dupe)
+	{
+      temp[j] = data->encrypted_User[j];
+
+	  if(temp[j] == text[i][0])
+	  {
+         int *lIndex = &i;
+   
+	    letter_dencrypter(lIndex, dencrypted);
+         
+        j++;
+		i = 0;
+		found = 1;
+
+	   }
+
+       else if(temp[j] != text[i][0])
+      {
+        i++;
+        found = 0;
+	  }
+
+	  if(j == length && found == 1)
+	  {
+		strcpy(data->user_name, dencrypted);
+	  }
+
+	  }
+}  
+
+void dencryptPS(info *data)
+{
+	input temp = "";
+	input dencrypted ="";
+	int i = 0; 
+	int j = 0;
+	int found = 0;
+	equivalence text[73] = {"A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", 
+		                    "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m",
+							"N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T",
+							"t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z",
+							"!", "#", "$", "%", "*", "&", "+", "?", "_", ".", "1", "2", "3",
+							"4", "5", "6", "7", "8", "9", "0"}; 
+
+
+
+	int length = strlen(data->encrypted_Ps);
+
+	int dupe = sizeof(text) / sizeof(text[0]);
+
+	while(j < length && i < dupe)
+	{
+      temp[j] = data->encrypted_Ps[j];
+
+	  if(temp[j] == text[i][0])
+	  {
+         int *lIndex = &i;
+   
+	    letter_dencrypter(lIndex, dencrypted);
+         
+        j++;
+		i = 0;
+		found = 1;
+
+	   }
+
+       else if(temp[j] != text[i][0])
+      {
+        i++;
+        found = 0;
+	  }
+
+	  if(j == length && found == 1)
+	  {
+		strcpy(data->password, dencrypted);
+	  }
+
+	}
 
 
 
@@ -159,31 +248,30 @@ void signUp()
 
 void logIn()  // Required to use the encrypted string
 {
-	/*
-	    TO DO
-
-        Choose an Approach
-	    1. Scan the printed string and make it to an encrypted form
-		2. De-encrypt the scanned info from the .txt file
-	*/
-
 	FILE *fp;
 	fp = fopen("users.txt", "r");
 	input username, password, inputUser, inputPass;
+	info login;
 	int found = 0;
 	
 	if (fp != NULL)
 	{
 		printf("\033[33mLOG IN\033[0m\n");
 		printf("Enter Username: ");
-		scanf("%s", inputUser);
+		scanf("%s", username);
 		printf("Enter Password: ");
-		scanf("%s", inputPass);
+		scanf("%s", password);
 		
 		printf("\n");
 		
-		while (fscanf(fp, "%s %s", username, password) != EOF)
+		while (fscanf(fp, "%s %s", login.encrypted_User , login.encrypted_Ps) != EOF)
 		{
+             dencryptUser(&login); // Dencrypt the string output of user
+			 dencryptPS(&login); // Dencrypt the string output of password
+
+			 strcpy(inputUser, login.user_name);
+			 strcpy(inputPass, login.password);
+
 			if (strcmp(username, inputUser) == 0 && strcmp(password, inputPass) == 0)
 			{
 				found = 1;
@@ -214,40 +302,66 @@ void logIn()  // Required to use the encrypted string
 
 void forgotPassword() // Required to use the encrypted string
 {
-
-	/*
-	    TO DO
-		
-		Choose an approach:
-	    1.a. Scan the printed string and make it to an encrypted form
-		1.b. De-encrypt the scanned info from the .txt file
-
-		2. Append/Overwrite the previous data stored (Depends on intepretation)
-
-		3. Allow strcmp() for if the encrypted & entered password are the same
-		   it will inform the user that they can login with the entered password.
-	*/
-
-
 	FILE *fp;
-	fp = fopen("users.txt", "a");
-	input username, password, inputUser;
+	fp = fopen("users.txt", "r");
+	input username, password, inputUser,inputPassword, newPs;
+	info fPassword;
 	int found = 0;
+	int close = 1;
 	
 	if (fp != NULL)
 	{
-		printf("\033[33mLOG IN\033[0m\n");
+		printf("\033[33mFORGET PASSWORD\033[0m\n");
 		printf("Enter username: ");
 		scanf("%s", inputUser);
 		
-		while (fscanf(fp, "%s %s", username, password) != EOF)
+		while (fscanf(fp, "%s %s", fPassword.encrypted_User, fPassword.encrypted_Ps) != EOF)
 		{
+            dencryptUser(&fPassword); // Dencrypt the string output of user
+			dencryptPS(&fPassword); // Dencrypt the string output of password
+
+			 strcpy(username, fPassword.user_name);
+			 strcpy(password, fPassword.password);
+
 			if (strcmp(username, inputUser) == 0)
-			{
-				found = 1;
-			}
+			{			
+				printf("Enter your original password: ");
+				scanf("%s", inputPassword);
+
+				if(strcmp(password, inputPassword) == 0)
+				 {
+                   printf("The password you entered is the same\n");
+				   found = 1;
+				 }
+                 else
+				 {
+				   fclose(fp);
+
+				   fp = fopen("users.txt", "a");
+
+				   printf("The password is incorrect\n");
+			       printf("Enter your new password: ");
+				   scanf("%s", newPs);
+
+				   strcpy(fPassword.password, newPs);
+
+				   encryptUser(&fPassword);
+				   encryptPS(&fPassword);
+
+                   fprintf(fp, "%s  ", fPassword.encrypted_User);  // Encrypts the string output of user
+				   fprintf(fp, "%s\n", fPassword.encrypted_Ps);    // Encrypts the string output of password
+
+				   found = 1;
+
+				   fclose(fp);
+				   printf("Password successfully changed.\n");
+                     
+				}
+			} 
+				   
 		}
-		int close = fclose(fp);
+		
+		close = fclose(fp);
 		if (close == 0)
 		{
 			if (found == 1)
@@ -256,12 +370,8 @@ void forgotPassword() // Required to use the encrypted string
 			}
 			else
 			{	
-				printf("Login failed. Incorrect username or password.\n");
+				printf("Login failed. Incorrect username.\n");
 			}
-		}
-		else
-		{
-			printf("Error in logging in.\n");
 		}
 	}
 	else
@@ -290,7 +400,7 @@ int main(){
             logIn();
             break;
         case 3:
-            // forgotPassword();
+            forgotPassword();
             break;
         case 4:
             printf("Exiting...");

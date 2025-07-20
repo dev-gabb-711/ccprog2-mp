@@ -7,8 +7,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-#define MAX_LENGTH (100)
-
+#define MAX_LENGTH (256)
 
 typedef struct{
 char user_name[MAX_LENGTH];
