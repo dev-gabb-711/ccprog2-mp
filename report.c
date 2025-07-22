@@ -37,27 +37,17 @@ void addReport(reportType *reports)
     scanf(" %[^\n]", reports->details);
 }
 
-void viewReports(reportType reports[], int reportCount)
-{
-    int i;
-    printf("========================================\n\n");
-    for (i = 0; i < reportCount; i++)
-    {
-        printf("Earthquake Report #%d:\n", i + 1);
-        printf("Date: %s\n", reports[i].date);
-        printf("Time: %s\n", reports[i].time);
-        printf("Magnitude: %.1f\n", reports[i].magnitude);
-        printf("Locatino: %s\n", reports[i].location);
-        printf("Details: %s\n", reports[i].details);
-        printf("\n========================================\n\n");
-    }
-}
-
 void exportEntries(reportType reports[], int reportCount)
 {
-	String20 filename;
-	FILE *fp;
-	int i;
+	FILE *fp, *reportCounter;
+	int i, lastEntry = 0;
+
+    reportCounter = fopen("reportCounter.txt", "r");
+    if (reportCounter != NULL)
+    {
+        fscanf(reportCounter, "%d", &lastEntry);
+        fclose(reportCounter);
+    }
 	
 	if (reportCount == 0)
 	{
@@ -65,19 +55,15 @@ void exportEntries(reportType reports[], int reportCount)
 	}
 	else
 	{
-		printf("Enter filename to export data into: ");
-		scanf("%20s", filename);
-		printf("\n");
-		
-		fp = fopen(filename, "w");
+		fp = fopen("exports.txt", "a");
 		if (fp != NULL)
 		{
 			for (i = 0; i < reportCount; i++)
 			{
-				fprintf(fp, "EARTHQUAKE ENTRY #%d\n", i + 1);
+				fprintf(fp, "EARTHQUAKE ENTRY #%d\n", lastEntry + i+ 1);
 				fprintf(fp, "Date: %s\n", reports[i].date);
 				fprintf(fp, "Time: %s\n", reports[i].time);
-				fprintf(fp, "Magnitude: %.2f\n", reports[i].magnitude);
+				fprintf(fp, "Magnitude: %.1f\n", reports[i].magnitude);
 				fprintf(fp, "Location: %s\n", reports[i].location);
 				fprintf(fp, "Details: %s\n", reports[i].details);
 				fprintf(fp, "\n");
@@ -85,8 +71,15 @@ void exportEntries(reportType reports[], int reportCount)
 			int close = fclose(fp);
 			if (close == 0)
 			{
-				printf("Data exported successfully to %s!\n", filename);
+				printf("Data exported successfully to exports.txt!\n");
 			}
+
+            reportCounter = fopen("reportCounter.txt", "w");
+            if (reportCounter != NULL)
+            {
+                fprintf(reportCounter, "%d", lastEntry + reportCount);
+                fclose(reportCounter);
+            }
 		}
 		else
 		{
@@ -105,7 +98,7 @@ int main()
     {
         printf("\nEarthquake Report System\n");
         printf("1. Add Report\n");
-        printf("2. View Reports\n");
+        printf("2. TBI\n"); // TO BE IMPLEMENTED SEGMENTS
         printf("3. Export Data\n");
         printf("4. Exit\n");
         printf("\n\nEnter your choice: ");
@@ -128,16 +121,6 @@ int main()
                 }
                 break;
             case 2:
-                if (reportCount == 0)
-                {
-                    printf("\n");
-                    printf("No reports available.\n");
-                }
-                else
-                {
-                    printf("\n");
-                    viewReports(reports, reportCount);
-                }
                 break;
             case 3:
                 printf("\n");
