@@ -1,31 +1,35 @@
-#include <stdio.h>
-#include <unistd.h>
+#include "header.h"
+
+void waitForEnter() {
+    char temp[2];
+    printf("Press Enter to return to the menu...\n");
+    scanf("%1[\n]", temp); // Flush leftover newline
+    scanf("%1[^\n]", temp); // Wait for actual Enter
+    scanf("%1[\n]", temp); // Consume the Enter
+}
 
 void beforeEarthquake()
 {
     printf("\n");
-    char ch[10];
-    printf("PLACEHOLDER\n\n");
-    printf("Press Any Key and Enter to Return to Main Menu...");
-    scanf("%s", ch);
+    printf("PLACEHOLDER: BEFORE\n\n");
+    waitForEnter();
+    printf("\n");
 }
 
 void duringEarthquake()
 {
     printf("\n");
-    char ch[10];
-    printf("PLACEHOLDER\n\n");
-    printf("Press Any Key and Enter to Return to Main Menu...");
-    scanf("%s", ch);
+    printf("PLACEHOLDER: DURING\n\n");
+    waitForEnter();
+    printf("\n");
 }
 
 void afterEarthquake()
 {
     printf("\n");
-    char ch[10];
-    printf("PLACEHOLDER\n\n");
-    printf("Press Any Key and Enter to Return to Main Menu...");
-    scanf("%s", ch);
+    printf("PLACEHOLDER: AFTER\n\n");
+    waitForEnter();
+    printf("\n");
 }
 
 void educationalHub()
@@ -65,10 +69,3 @@ void educationalHub()
         }
     } while(choice != 4);
 } 
-
-// FOR TESTING PURPOSES ONLY THIS FILE WILL BE CONNECTED TO MAIN.C FILE
-int main()
-{
-    educationalHub();
-    return 0;
-}
