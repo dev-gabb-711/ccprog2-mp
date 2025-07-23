@@ -1,4 +1,9 @@
 #include "header.h"
+#include "userAuth.h"
+#include "userAuth.c"
+// #include "report.c" comment out once it can be connected properly and that data in memory is saved
+// #include "info.c"   same here
+#include "educModel.c"
 
 void printLanding()
 {
@@ -15,8 +20,7 @@ void printMainMenu()
 
     do
     {
-        printf("\033[33mMAIN MENU\033[0m\n");
-        printf("Username: SampleUser\n\n");
+        printf("\n\033[33mMAIN MENU\033[0m\n");
             printf("1. Earthquake Reporting System\n");
             printf("2. Earthquake Sector Information Hub\n");
             printf("3. Educational Hub\n");
@@ -27,54 +31,29 @@ void printMainMenu()
 
         switch (choice) {
         case 1:
-            printf("Earthquake Reporting System functionality to be implemented.\n");
+            
             break;
         case 2:
-            printf("Earthquake Sector Information Hub functionality to be implemented.\n");
+            
             break;
         case 3:
-            printf("Educational Hub functionality to be implemented.\n");
+            printf("\n\n");
+			educationalHub();
             break;
         case 4:
-            printf("Logging out...\n");
+            printf("Logging out...\n\n");
             sleep(3);
-            system("cls"); // Clear the console for better visibility
             break;
         default:
-            printf("Invalid choice. Please try again.\n");
+            printf("Invalid choice. Please try again.\n\n");
         }
     } while (choice != 4);
-}
-
-void signUp()
-{
-    printf("Sign Up functionality to be implemented.\n");
-}
-
-void logIn()
-{
-    printf("Log In functionality to be implemented.\n");
-    printf("Please enter your username and password.\n\n");
-    // Here you would typically collect user input and validate it.
-    // For now, we will just simulate a successful login.
-    printf("Login successful!\n");
-
-    sleep(3);
-
-    system("cls"); // Clear the console for better visibility
-
-    printMainMenu();
-}
-
-void forgotPassword()
-{
-    printf("Forgot Password functionality to be implemented.\n");
 }
 
 int main() 
 {
     int choice;
-
+    
     printf("Welcome to...\n\n\n");
     sleep(3);
     
@@ -95,7 +74,7 @@ int main()
             forgotPassword();
             break;
         case 4:
-            printf("Exiting...");
+            printf("Thank you for using \033[34mPROJECT NOAH: \033[32mEARTHQUAKE SECTOR\033[0m");
             break;
         default:
             printf("Invalid choice. Please try again.\n");
