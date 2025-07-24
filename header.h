@@ -16,17 +16,34 @@ typedef char String500[501]; // For very long text inputs (like details and desc
 
 typedef struct
 {
-	char user_name[MAX_LENGTH];
-	char password[MAX_LENGTH];
-	char encrypted_User[MAX_LENGTH];
-	char encrypted_Ps[MAX_LENGTH];
+    char user_name[MAX_LENGTH];
+    char password[MAX_LENGTH];
+    char encrypted_User[MAX_LENGTH];
+    char encrypted_Ps[MAX_LENGTH];
 } info;
 
+typedef struct timeTag
+{
+	int hour;
+	int minute;
+	String20 hourStr;
+	String20 minuteStr;
+} timeType;
+
+typedef struct dateTag
+{
+	int day;
+	int month;
+	int year;
+	String20 dayStr;
+	String20 monthStr;
+	String20 yearStr;
+} dateType;
 
 typedef struct reportTag 
 {
-    String20 date;
-    String20 time;
+    dateType date;
+    timeType time;
     float magnitude;
     String100 location;
     String500 details;
@@ -35,16 +52,8 @@ typedef struct reportTag
 // From main.c
 void printLanding();
 void printMainMenu();
-
-// From report.c
-void addReport(reportType *reports);
-void exportEntries(reportType reports[], int reportCount);
-// More to be added
-
-// From info.c
-int importRecords(reportType reports[], int *numReports);
-void viewRecords(reportType reports[], int *numReports);
-// More to be added
+void printReportLanding(reportType reports[], int *numReports);
+void printInfoLanding(reportType reports[], int *numReports);
 
 // From userAuth.c
 void signUp();
@@ -55,7 +64,19 @@ void encryptPS(info *data);
 void dencryptUser(info *data);
 void dencryptPS(info *data);
 
-// From educModel.c
+// EARTHQUAKE REPORTING SYSTEM
+timeType getTime();
+dateType getDate();
+void addReport(reportType reports[], int *numReports);
+void exportRecords(reportType reports[], int numReports);
+// More to be added
+
+// EARTHQUAKE SECTOR INFORMATION HUB
+int importRecords(reportType reports[], int *numReports);
+void viewRecords(reportType reports[], int *numReports);
+// More to be added
+
+// EDUCATIONAL MODULE
 void educationalHub();
 void beforeEarthquake();
 void duringEarthquake();
