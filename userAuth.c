@@ -71,8 +71,6 @@ void encryptPS(info *data)
 
 	int dupe = sizeof(text) / sizeof(text[0]);
 
-	printf("%d\n", dupe);
-
 	while(j < length && i < dupe)
 	{
       temp[j] = data->password[j];
@@ -218,7 +216,7 @@ void signUp()
 	
 	if (fp != NULL)
 	{
-	  printf("\033[33mSIGN UP\033[0m\n");
+	  printf("\n\033[33mSIGN UP\033[0m\n");
 	  printf("Enter Username: "); 
 	  scanf("%s", personal.user_name);
 	  printf("Enter Password: ");
@@ -233,16 +231,16 @@ void signUp()
 		int close = fclose(fp);
 		if (close == 0)
 		{
-			printf("Account successfully added!\n");
+			printf("Account successfully added!\n\n");
 		}
 		else
 		{
-			printf("Error in adding account\n");
+			printf("Error in adding account\n\n");
 		}
 	}
 	else
 	{
-		printf("Error in opening users file\n");
+		printf("Error in opening users file\n\n");
 	}
 }
 
@@ -256,7 +254,7 @@ void logIn()  // Required to use the encrypted string
 	
 	if (fp != NULL)
 	{
-		printf("\033[33mLOG IN\033[0m\n");
+		printf("\n\033[33mLOG IN\033[0m\n");
 		printf("Enter Username: ");
 		scanf("%s", username);
 		printf("Enter Password: ");
@@ -282,21 +280,24 @@ void logIn()  // Required to use the encrypted string
 		{
 			if (found == 1)
 			{
-				printf("Login successful! Welcome, %s!\n", inputUser);
+				printf("Login successful! Welcome, %s!", inputUser);
+				sleep(3);
+				printf("\n");
+				printMainMenu();
 			}
 			else
 			{	
-				printf("Login failed. Incorrect username or password.\n");
+				printf("Login failed. Incorrect username or password.\n\n");
 			}
 		}
 		else
 		{
-			printf("Error in logging in.\n");
+			printf("Error in logging in.\n\n");
 		}
 	}
 	else
 	{
-		printf("Error in opening users file\n");
+		printf("Error in opening users file\n\n");
 	}
 }
 
@@ -311,7 +312,7 @@ void forgotPassword() // Required to use the encrypted string
 	
 	if (fp != NULL)
 	{
-		printf("\033[33mFORGET PASSWORD\033[0m\n");
+		printf("\n\033[33mFORGET PASSWORD\033[0m\n");
 		printf("Enter username: ");
 		scanf("%s", inputUser);
 		
@@ -330,7 +331,7 @@ void forgotPassword() // Required to use the encrypted string
 
 				if(strcmp(password, inputPassword) == 0)
 				 {
-                   printf("The password you entered is the same\n");
+                   printf("The password you entered is the same\n\n");
 				   found = 1;
 				 }
                  else
@@ -339,7 +340,7 @@ void forgotPassword() // Required to use the encrypted string
 
 				   fp = fopen("users.txt", "a");
 
-				   printf("The password is incorrect\n");
+				   printf("The password is incorrect\n\n");
 			       printf("Enter your new password: ");
 				   scanf("%s", newPs);
 
@@ -354,7 +355,7 @@ void forgotPassword() // Required to use the encrypted string
 				   found = 1;
 
 				   fclose(fp);
-				   printf("Password successfully changed.\n");
+				   printf("Password successfully changed.\n\n");
                      
 				}
 			} 
@@ -366,50 +367,16 @@ void forgotPassword() // Required to use the encrypted string
 		{
 			if (found == 1)
 			{
-				printf("Login successful! Welcome, %s!\n", inputUser);
+				printf("Login successful! Welcome, %s!\n\n", inputUser);
 			}
 			else
 			{	
-				printf("Login failed. Incorrect username.\n");
+				printf("Login failed. Incorrect username.\n\n");
 			}
 		}
 	}
 	else
 	{
-		printf("Error in opening users file\n");
+		printf("Error in opening users file\n\n");
 	}
-}
-
-int main(){
-	int choice;
-	do
-    {
-        printf("User Authentication Module (Separate Program but will be added to the main when it is finalized)\n");
-        printf("1. Sign Up\n");
-        printf("2. Log In\n");
-        printf("3. Forgot Password\n");
-        printf("4. Exit\n");
-        printf("\nEnter your selection: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-        case 1:
-            signUp();
-            break;
-        case 2:
-            logIn();
-            break;
-        case 3:
-            forgotPassword();
-            break;
-        case 4:
-            printf("Exiting...");
-            sleep(3);
-            break;
-        default:
-            printf("Invalid choice. Please try again.\n");
-        } 
-    } while (choice != 4);
-	
-	return 0;
 }
