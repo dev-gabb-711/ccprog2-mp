@@ -121,13 +121,13 @@ void printInfoLanding(reportType reports[], int *numReports)
                 switch (subChoice)
                 {
                     case 1:
-                        // sortByMagnitude(reports, *numReports); TBI
+                        sortByMagnitude(reports, *numReports);
                         break;
                     case 2:
-                        // sortByLocation(reports, *numReports); TBI
+                        sortByLocation(reports, *numReports);
                         break;
                     case 3:
-                        // sortByTime(reports, *numReports); TBI
+                        sortByTime(reports, *numReports); 
                         break;
                     default:
                         printf("Invalid choice.\n");

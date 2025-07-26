@@ -74,7 +74,17 @@ void exportRecords(reportType reports[], int numReports);
 // EARTHQUAKE SECTOR INFORMATION HUB
 int importRecords(reportType reports[], int *numReports);
 void viewRecords(reportType reports[], int *numReports);
-// More to be added
+
+// Print Sorted/Seached Information
+void printByMagnitude(reportType reports[], int numReports);
+void printByLocation(reportType reports[], int numReports);
+void printByTime(reportType reports[], int numReports);
+//More to be added
+
+// Sorting Features
+ void sortByMagnitude(reportType sMag[], int numReports);
+ void sortByLocation(reportType sLoc[], int numReports);
+ void sortbyTime(reportType sTime[], int numReports);
 
 // EDUCATIONAL MODULE
 void educationalHub();

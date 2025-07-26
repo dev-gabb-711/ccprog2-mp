@@ -273,6 +273,8 @@ void logIn()  // Required to use the encrypted string
 			if (strcmp(username, inputUser) == 0 && strcmp(password, inputPass) == 0)
 			{
 				found = 1;
+				printf("Login successful! Welcome, %s!", inputUser);
+				sleep(1);
 			}
 		}
 		int close = fclose(fp);
@@ -280,7 +282,6 @@ void logIn()  // Required to use the encrypted string
 		{
 			if (found == 1)
 			{
-				printf("Login successful! Welcome, %s!", inputUser);
 				sleep(3);
 				printf("\n");
 				printMainMenu();
@@ -331,7 +332,6 @@ void forgotPassword() // Required to use the encrypted string
 
 				if(strcmp(password, inputPassword) == 0)
 				 {
-                   printf("The password you entered is the same\n\n");
 				   found = 1;
 				 }
                  else
@@ -367,7 +367,7 @@ void forgotPassword() // Required to use the encrypted string
 		{
 			if (found == 1)
 			{
-				printf("Login successful! Welcome, %s!\n\n", inputUser);
+				printf("The password you entered is the same, kindly login again.\n\n");
 			}
 			else
 			{	
