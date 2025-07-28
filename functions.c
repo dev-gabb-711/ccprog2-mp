@@ -109,11 +109,11 @@ dateType getDate()
 		scanf("%2s %2s %4s", temp.monthStr, temp.dayStr, temp.yearStr);
 		
 		temp.day = (temp.dayStr[0] - '0') * 10 + (temp.dayStr[1] - '0');
-        temp.month = (temp.monthStr[0] - '0') * 10 + (temp.monthStr[1] - '0');
-        temp.year = (temp.yearStr[0] - '0') * 1000 +
-                 (temp.yearStr[1] - '0') * 100 +
-                 (temp.yearStr[2] - '0') * 10 +
-                 (temp.yearStr[3] - '0');
+        	temp.month = (temp.monthStr[0] - '0') * 10 + (temp.monthStr[1] - '0');
+        	temp.year = (temp.yearStr[0] - '0') * 1000 +
+                 	(temp.yearStr[1] - '0') * 100 +
+                 	(temp.yearStr[2] - '0') * 10 +
+                 	(temp.yearStr[3] - '0');
                  
 		if (temp.year > 0 && temp.month >= 1 && temp.month <= 12 && temp.day >= 1 && temp.day <= 31)
 		{
@@ -134,9 +134,9 @@ void addReport(reportType reports[], int *numReports)
 	}
 	else
 	{
-		printf("Report an Earthquake\n");
-        printf("========================================\n");
-        sleep(1);
+		printf("\nReport an Earthquake\n");
+        	printf("========================================\n");
+        	sleep(1);
         
 		reportType *r = &reports[*numReports];
 		r->date = getDate();
@@ -150,7 +150,7 @@ void addReport(reportType reports[], int *numReports)
 		scanf(" %[^\n]", r->details);
 		
 		(*numReports)++;
-		printf("Report added successfully!\n\n");
+		printf("\nReport added successfully!\n");
 	}
 }
 
@@ -198,18 +198,14 @@ void viewRecords(reportType reports[], int *numReports)
     float totalMagnitude = 0.0;
     float highest = 0.0;
     float lowest = 0.0;
-    
-    if (*numReports == 0)
-    {
-        importRecords(reports, numReports);
-    }
 
     if (*numReports > 0)
     {
-        printf("========================================\n\n");
+    	printf("\nView All Records\n");
+        printf("========================================\n");
         for (i = 0; i < *numReports; i++)
         {
-            printf("Earthquake Report #%d:\n", i + 1);
+            printf("\nEarthquake Report #%d:\n", i + 1);
             printf("Date: %s/%s/%s\n", reports[i].date.monthStr, reports[i].date.dayStr, reports[i].date.yearStr);
             printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
             printf("Magnitude: %.1f\n", reports[i].magnitude);
@@ -294,14 +290,36 @@ int importRecords(reportType reports[], int *numReports)
  	return 0;
 }
 
-void printByMagnitude(reportType reports[], int numReports)
+void printByDate(reportType reports[], int numReports)
 {
    int i;
-   printf("========================================\n\n");
+   
+   printf("\nSort by Date\n");
+   printf("========================================\n");
 
    for(i = 0; i < numReports; i++)
    {
-	    printf("Magnitude: %.1f\n", reports[i].magnitude);
+   	printf("\nEARTHQUAKE ENTRY #%d\n", i + 1);
+        printf("Date: %s/%s/%s\n", reports[i].date.monthStr, reports[i].date.dayStr, reports[i].date.yearStr);
+        printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
+        printf("Magnitude: %.1f\n", reports[i].magnitude);
+        printf("Location: %s\n", reports[i].location);
+        printf("Details: %s\n", reports[i].details);
+        printf("\n========================================\n");
+   }
+}
+
+void printByMagnitude(reportType reports[], int numReports)
+{
+   int i;
+   
+   printf("\nSort by Magnitude\n");
+   printf("========================================\n");
+
+   for(i = 0; i < numReports; i++)
+   {
+   	printf("\nEARTHQUAKE ENTRY #%d\n", i + 1);
+	printf("Magnitude: %.1f\n", reports[i].magnitude);
         printf("Date: %s/%s/%s\n", reports[i].date.monthStr, reports[i].date.dayStr, reports[i].date.yearStr);
         printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
         printf("Location: %s\n", reports[i].location);
@@ -314,13 +332,15 @@ void printByLocation(reportType reports[], int numReports)
 {
    int i;
    
-   printf("========================================\n\n");
+   printf("\nSort by Location\n");
+   printf("========================================\n");
    for(i = 0; i < numReports; i++)
    {
+   	printf("\nEARTHQUAKE ENTRY #%d\n", i + 1);
        printf("Location: %s\n", reports[i].location);
        printf("Date: %s/%s/%s\n", reports[i].date.monthStr, reports[i].date.dayStr, reports[i].date.yearStr);
        printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
-	   printf("Magnitude: %.1f\n", reports[i].magnitude);
+	printf("Magnitude: %.1f\n", reports[i].magnitude);
        printf("Details: %s\n", reports[i].details);
        printf("\n========================================\n");
 
@@ -331,31 +351,71 @@ void printByTime(reportType reports[], int numReports)
 {
    int i;
 
-   printf("========================================\n\n");
+   printf("\nSort by Time\n");
+   printf("========================================\n");
    for(i = 0; i < numReports; i++)
    {
+   	printf("\nEARTHQUAKE ENTRY #%d\n", i + 1);
        printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
        printf("Date: %s/%s/%s\n", reports[i].date.monthStr, reports[i].date.dayStr, reports[i].date.yearStr);
-	   printf("Magnitude: %.1f\n", reports[i].magnitude);
+	printf("Magnitude: %.1f\n", reports[i].magnitude);
        printf("Location: %s\n", reports[i].location);
-	   printf("Details: %s\n", reports[i].details);
+	printf("Details: %s\n", reports[i].details);
        printf("\n========================================\n");
    }
 
 }
 
-void sortByMagnitude(reportType sMag[], int numReports)
+void sortByDate(reportType sDate[], int numReports)
 {
-   
-int i, j, min;
-float tempMagnitude;
-String20 tempDay;
-String20 tempMonth;
-String20 tempYear;
-String100 tempLocation;
-String20 tempHour;
-String20 tempMinutes;
-String500 tempDetails;
+	int i, j, min;
+	reportType temp;
+
+   	for (i = 0; i < numReports - 1; i++)
+   	{
+   		min = i;
+   		for (j = i + 1; j < numReports; j++)
+   		{
+   			if (sDate[j].date.year < sDate[min].date.year)
+   			{
+   				min = j;
+			}
+			else if (sDate[j].date.year == sDate[min].date.year)
+			{
+				if (sDate[j].date.month < sDate[min].date.month)
+				{
+					min = j;
+				}
+				else if (sDate[j].date.month == sDate[min].date.month)
+				{
+					if (sDate[j].date.day < sDate[min].date.day)
+					{
+						min = j;
+					}
+				}
+			}
+		}
+		if (min != i)
+		{
+			temp = sDate[i];
+			sDate[i] = sDate[min];
+			sDate[min] = temp;
+		}
+	}
+	printByDate(sDate, numReports);
+}
+
+void sortByMagnitude(reportType sMag[], int numReports)
+{  
+	int i, j, min;
+	float tempMagnitude;
+	String20 tempDay;
+	String20 tempMonth;
+	String20 tempYear;
+	String100 tempLocation;
+	String20 tempHour;
+	String20 tempMinutes;
+	String500 tempDetails;
 
    for (i = 0; i < numReports - 1; i++) {
       min = i; // min is the index of the lowest element
@@ -394,7 +454,7 @@ String500 tempDetails;
                strcpy(sMag[i].time.minuteStr, sMag[min].time.minuteStr);
                strcpy(sMag[min].time.minuteStr, tempMinutes);
 
-			   strcpy(tempDetails, sMag[i].details);
+		strcpy(tempDetails, sMag[i].details);
                strcpy(sMag[i].details, sMag[min].details); 
                strcpy(sMag[min].details, tempDetails);
           }
@@ -405,16 +465,16 @@ String500 tempDetails;
 
 void sortByLocation(reportType sLoc[], int numReports)
 {
-int i, j, min;
-String100 tempLocation;
+	int i, j, min;
+	String100 tempLocation;
 
-float tempMagnitude;
-String20 tempDay;
-String20 tempMonth;
-String20 tempYear;
-String20 tempHour;
-String20 tempMinutes;
-String500 tempDetails;
+	float tempMagnitude;
+	String20 tempDay;
+	String20 tempMonth;
+	String20 tempYear;
+	String20 tempHour;
+	String20 tempMinutes;
+	String500 tempDetails;
 
    for (i = 0; i < numReports - 1; i++) {
       min = i; // min is the index of the lowest element
@@ -444,7 +504,7 @@ String500 tempDetails;
             strcpy(sLoc[i].date.yearStr, sLoc[min].date.yearStr);
             strcpy(sLoc[min].date.yearStr, tempYear);
 
-			strcpy(tempHour, sLoc[i].time.hourStr);
+	    strcpy(tempHour, sLoc[i].time.hourStr);
             strcpy(sLoc[i].time.hourStr, sLoc[min].time.hourStr);
             strcpy(sLoc[min].time.hourStr, tempHour);
 
@@ -452,7 +512,7 @@ String500 tempDetails;
             strcpy(sLoc[i].time.minuteStr, sLoc[min].time.minuteStr);
             strcpy(sLoc[min].time.minuteStr, tempMinutes);
 
-			strcpy(tempDetails, sLoc[i].details);
+	    strcpy(tempDetails, sLoc[i].details);
             strcpy(sLoc[i].details, sLoc[min].details); 
             strcpy(sLoc[min].details, tempDetails);
             
@@ -463,98 +523,34 @@ String500 tempDetails;
 }
 
 
- void sortByTime(reportType sTime[], int numReports)
+void sortByTime(reportType sTime[], int numReports)
 {
-int i, j, min;
-String20 tempHour;
-String20 tempMinutes;
-int flag = 0;
+	int i, j, min;
+	reportType temp;
 
-float tempMagnitude;
-String20 tempDay;
-String20 tempMonth;
-String20 tempYear;
-String100 tempLocation;
-String500 tempDetails;
-
-   for (i = 0; i < numReports - 1; i++) {
-      min = i; // min is the index of the lowest element
-
-     for (j = i + 1; j < numReports; j++)
-           if (strcmp(sTime[min].time.hourStr, sTime[j].time.hourStr) > 0) // Check if the string is time correctly sorted
-             min = j;
-			  else if(strcmp(sTime[min].time.hourStr, sTime[j].time.hourStr) == 0) // If the hour string is equal
-                  if(strcmp(sTime[min].time.minuteStr, sTime[j].time.minuteStr) > 0) // Checks for the minute string
-				    {
-                        min = j;
-                        flag = 1;
-					}
-				    
-            if (i != min && flag == 0) { // Runs when the current hour string is bigger than the index 
-              strcpy(tempHour, sTime[i].time.hourStr);
-              strcpy(sTime[i].time.hourStr, sTime[min].time.hourStr);
-              strcpy(sTime[min].time.hourStr, tempHour);
-			  strcpy(tempMinutes, sTime[i].time.minuteStr);
-              strcpy(sTime[i].time.minuteStr, sTime[min].time.minuteStr);
-              strcpy(sTime[min].time.minuteStr, tempMinutes);
-
-			   tempMagnitude = sTime[i].magnitude;
-               sTime[i].magnitude = sTime[min].magnitude;
-               sTime[min].magnitude = tempMagnitude;
-   
-               strcpy(tempDay, sTime[i].date.dayStr);
-               strcpy(sTime[i].date.dayStr, sTime[min].date.dayStr);
-               strcpy(sTime[min].date.dayStr, tempDay);
-			
-               strcpy(tempMonth, sTime[i].date.monthStr);
-               strcpy(sTime[i].date.monthStr, sTime[min].date.monthStr);
-               strcpy(sTime[min].date.monthStr, tempMonth);
-	
-               strcpy(tempYear, sTime[i].date.yearStr);
-               strcpy(sTime[i].date.yearStr, sTime[min].date.yearStr);
-               strcpy(sTime[min].date.yearStr, tempYear);
-	
-               strcpy(tempLocation, sTime[i].location);
-               strcpy(sTime[i].location, sTime[min].location); 
-               strcpy(sTime[min].location, tempLocation);
-
-			   strcpy(tempDetails, sTime[i].details);
-               strcpy(sTime[i].details, sTime[min].details); 
-               strcpy(sTime[min].details, tempDetails);
-             }
-
-			// Runs when the hour string is equal but the index of the minute string is smaller than the current min
-		    if(i != min && flag == 1) 
-			{
-            strcpy(tempMinutes, sTime[i].time.minuteStr);
-            strcpy(sTime[i].time.minuteStr, sTime[min].time.minuteStr);
-            strcpy(sTime[min].time.minuteStr, tempMinutes);
-
-			   tempMagnitude = sTime[i].magnitude;
-               sTime[i].magnitude = sTime[min].magnitude;
-               sTime[min].magnitude = tempMagnitude;
-   
-               strcpy(tempDay, sTime[i].date.dayStr);
-               strcpy(sTime[i].date.dayStr, sTime[min].date.dayStr);
-               strcpy(sTime[min].date.dayStr, tempDay);
-			
-               strcpy(tempMonth, sTime[i].date.monthStr);
-               strcpy(sTime[i].date.monthStr, sTime[min].date.monthStr);
-               strcpy(sTime[min].date.monthStr, tempMonth);
-	
-               strcpy(tempYear, sTime[i].date.yearStr);
-               strcpy(sTime[i].date.yearStr, sTime[min].date.yearStr);
-               strcpy(sTime[min].date.yearStr, tempYear);
-	
-               strcpy(tempLocation, sTime[i].location);
-               strcpy(sTime[i].location, sTime[min].location); 
-               strcpy(sTime[min].location, tempLocation);
-
-			   strcpy(tempDetails, sTime[i].details);
-               strcpy(sTime[i].details, sTime[min].details); 
-               strcpy(sTime[min].details, tempDetails);
-
+   	for (i = 0; i < numReports - 1; i++)
+   	{
+   		min = i;
+   		for (j = i + 1; j < numReports; j++)
+   		{
+   			if (sTime[j].time.hour < sTime[min].time.hour)
+   			{
+   				min = j;
 			}
-      }
-    printByTime(sTime, numReports);
+			else if (sTime[j].time.hour == sTime[min].time.hour)
+			{
+				if (sTime[j].time.minute < sTime[min].time.minute)
+				{
+					min = j;
+				}
+			}
+		}
+		if (min != i)
+		{
+			temp = sTime[i];
+			sTime[i] = sTime[min];
+			sTime[min] = temp;
+		}
+	}
+	printByTime(sTime, numReports);
 } 
