@@ -14,7 +14,6 @@ void beforeEarthquake()
     printf("\n");
     printf("PLACEHOLDER: BEFORE\n\n");
     waitForEnter();
-    printf("\n");
 }
 
 void duringEarthquake()
@@ -22,7 +21,6 @@ void duringEarthquake()
     printf("\n");
     printf("PLACEHOLDER: DURING\n\n");
     waitForEnter();
-    printf("\n");
 }
 
 void afterEarthquake()
@@ -30,15 +28,15 @@ void afterEarthquake()
     printf("\n");
     printf("PLACEHOLDER: AFTER\n\n");
     waitForEnter();
-    printf("\n");
 }
 
 void educationalHub()
 {
+	system("clear || cls");
     int choice;
 
     do {
-        printf("\n\033[36mEARTHQUAKE SECTOR EDUCATIONAL HUB\033[0m\n");
+        printf("\033[36mEARTHQUAKE SECTOR EDUCATIONAL HUB\033[0m\n");
         printf("This section will provide educational resources and information related to earthquake preparedness and safety.\n");
         printf("1. What to do BEFORE an earthquake?\n");
         printf("2. What to do DURING an earthquake?\n");
@@ -51,20 +49,15 @@ void educationalHub()
 
         switch (choice)
         {
-            case 1: printf("Redirecting to the BEFORE an earthquake module...\n");
-                    sleep(3);
-                    beforeEarthquake(); 
+            case 1: beforeEarthquake(); 
                     break;
-            case 2: printf("Redirecting to the DURING an earthquake module...\n");
-                    sleep(3);
-                    duringEarthquake(); 
+            case 2: duringEarthquake(); 
                     break;
-            case 3: printf("Redirecting to the AFTER an earthquake module...\n");
-                    sleep(3);
-                    afterEarthquake(); 
+            case 3: afterEarthquake(); 
                     break;
             case 4: printf("Returning to Main Menu...\n");
                     sleep(2);
+					system("clear || cls");
                     break;
             default: printf("Invalid choice. Please try again.\n");
         }
@@ -211,6 +204,8 @@ void viewRecords(reportType reports[], int *numReports)
             printf("Magnitude: %.1f\n", reports[i].magnitude);
             printf("Location: %s\n", reports[i].location);
             printf("Details: %s\n", reports[i].details);
+			printf("DEBUG DATE: %d/%d/%d\n", reports[i].date.month, reports[i].date.day, reports[i].date.year);
+			printf("DEBUG TIME: %d:%d\n", reports[i].time.hour, reports[i].time.minute);
             printf("\n========================================\n");
             totalMagnitude = totalMagnitude + reports[i].magnitude;
             
@@ -251,7 +246,6 @@ int importRecords(reportType reports[], int *numReports)
  	
  	if (fp != NULL)
  	{
- 		*numReports = 0;
  		while (fscanf(fp, " EARTHQUAKE ENTRY #%*d\n") != EOF)
  		{
  			fscanf(fp, " Date: %2s/%2s/%4s",
@@ -305,7 +299,7 @@ void printByDate(reportType reports[], int numReports)
         printf("Magnitude: %.1f\n", reports[i].magnitude);
         printf("Location: %s\n", reports[i].location);
         printf("Details: %s\n", reports[i].details);
-        printf("\n========================================\n");
+        printf("\n========================================\n\n");
    }
 }
 
@@ -314,7 +308,7 @@ void printByMagnitude(reportType reports[], int numReports)
    int i;
    
    printf("\nSort by Magnitude\n");
-   printf("========================================\n");
+   printf("========================================\n\n");
 
    for(i = 0; i < numReports; i++)
    {
@@ -324,7 +318,7 @@ void printByMagnitude(reportType reports[], int numReports)
         printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
         printf("Location: %s\n", reports[i].location);
         printf("Details: %s\n", reports[i].details);
-        printf("\n========================================\n");
+        printf("\n========================================\n\n");
    }
 }
 
@@ -342,7 +336,7 @@ void printByLocation(reportType reports[], int numReports)
        printf("Time: %s:%s\n", reports[i].time.hourStr, reports[i].time.minuteStr);
 	printf("Magnitude: %.1f\n", reports[i].magnitude);
        printf("Details: %s\n", reports[i].details);
-       printf("\n========================================\n");
+       printf("\n========================================\n\n");
 
    }
 }
@@ -361,7 +355,7 @@ void printByTime(reportType reports[], int numReports)
 	printf("Magnitude: %.1f\n", reports[i].magnitude);
        printf("Location: %s\n", reports[i].location);
 	printf("Details: %s\n", reports[i].details);
-       printf("\n========================================\n");
+       printf("\n========================================\n\n");
    }
 
 }
