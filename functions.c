@@ -241,27 +241,37 @@ void editReport(reportType reports[], int *numReports)
 		{
 			case 1: 
 				reports[index].date = getDate();
+				printf("\nDetails successfully changed.\n\n");
 				break;
 			case 2:
 				reports[index].time = getTime();
+				printf("\nDetails successfully changed.\n\n");
 				break;
 			case 3:
 				printf("Enter Magnitude: ");
 				scanf("%f", &reports[index].magnitude);
+				printf("\nDetails successfully changed.\n\n");
 				break;
 			case 4:
 				printf("Enter Location: ");
 				scanf(" %[^\n]", reports[index].location);
+				printf("\nDetails successfully changed.\n\n");
 				break;
 			case 5:
 				printf("Enter Details: ");
 				scanf(" %[^\n]", reports[index].details);
+				printf("\nDetails successfully changed.\n\n");
 				break;
 			default:
 				printf("Invalid choice. No changes made.\n");
 		}
+		
 	}
-	printf("\nDetails successfully changed.\n\n");
+	else
+	{
+		printf("Entry doesn't exist.\n\n");
+	}
+	
 }
 
 void deleteReport(reportType reports[], int *numReports)
