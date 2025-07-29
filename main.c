@@ -14,13 +14,14 @@ void printLanding()
 
 void printMainMenu()
 {
+    system("clear || cls");
     reportType reports[MAX_REPORTS];
     int reportCount = 0;
     int choice;
 
     do
     {
-        printf("\n\033[33mMAIN MENU\033[0m\n");
+        printf("\033[33mMAIN MENU\033[0m\n");
         printf("1. Earthquake Reporting System\n");
         printf("2. Earthquake Sector Information Hub\n");
         printf("3. Educational Hub\n");
@@ -40,18 +41,21 @@ void printMainMenu()
                 educationalHub();
                 break;
             case 4:
-                printf("\n\nLogging Out\n");
+                printf("\nLogging Out\n");
                 sleep(3);
+                system("clear || cls");
+                break;
         }
     } while (choice != 4);
 }
 
 void printReportLanding(reportType reports[], int *numReports)
 {
+    system("clear || cls");
 	int choice;
 
     do {
-        printf("\n\033[36mEARTHQUAKE REPORT SECTOR\033[0m\n");
+        printf("\033[36mEARTHQUAKE REPORT SECTOR\033[0m\n");
         printf("1. Report an Earthquake\n");
         printf("2. Edit a Record\n");
         printf("3. Delete a Record\n");
@@ -80,6 +84,7 @@ void printReportLanding(reportType reports[], int *numReports)
             case 5:
                 printf("Returning to Main Menu...\n");
                 sleep(2);
+                system("clear || cls");
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
@@ -90,11 +95,13 @@ void printReportLanding(reportType reports[], int *numReports)
 
 void printInfoLanding(reportType reports[], int *numReports)
 {
+    system("clear || cls");
 	int choice, subChoice;
+    importRecords(reports, numReports);
 
     do
     {
-        printf("\n\033[36mEARTHQUAKE SECTOR INFORMATION HUB\033[0m\n");
+        printf("\033[36mEARTHQUAKE SECTOR INFORMATION HUB\033[0m\n");
         printf("1. View All Records\n");
         printf("2. Sort Reports\n");
         printf("3. Search Reports\n");
@@ -112,21 +119,25 @@ void printInfoLanding(reportType reports[], int *numReports)
 
             case 2:
                 printf("\nSort Reports By:\n");
-                printf("1. Magnitude\n");
-                printf("2. Location\n");
-                printf("3. Time\n\n");
+                printf("1. Date\n");
+                printf("2. Magnitude\n");
+                printf("3. Location\n");
+                printf("4. Time\n\n");
                 printf("Enter your choice: ");
                 scanf("%d", &subChoice);
 
                 switch (subChoice)
                 {
                     case 1:
+                        sortByDate(reports, *numReports);
+                        break;                    
+                    case 2:
                         sortByMagnitude(reports, *numReports);
                         break;
-                    case 2:
+                    case 3:
                         sortByLocation(reports, *numReports);
                         break;
-                    case 3:
+                    case 4:
                         sortByTime(reports, *numReports); 
                         break;
                     default:
@@ -193,6 +204,7 @@ void printInfoLanding(reportType reports[], int *numReports)
             case 5:
                 printf("Returning to Main Menu...\n");
                 sleep(2);
+                system("clear || cls");
                 break;
 
             default:
@@ -207,6 +219,7 @@ int main()
     
     printf("Welcome to...\n\n\n");
     sleep(3);
+    system("clear || cls");
     
     do
     {
