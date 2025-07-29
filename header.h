@@ -83,10 +83,11 @@ void printByTime(reportType reports[], int numReports);
 //More to be added
 
 // Sorting Features
-void sortByDate(reportType sDate[], int numReports);
-void sortByMagnitude(reportType sMag[], int numReports);
-void sortByLocation(reportType sLoc[], int numReports);
-void sortbyTime(reportType sTime[], int numReports);
+void sortByDate(reportType sDate[], int numReports, int flag);
+void sortByMagnitude(reportType sMag[], int numReports, int flag);
+void sortByLocation(reportType sLoc[], int numReports, int flag);
+void sortbyTime(reportType sTime[], int numReports, int flag);
+
 
 // EDUCATIONAL MODULE
 void educationalHub();

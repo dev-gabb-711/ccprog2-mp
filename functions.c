@@ -1,4 +1,5 @@
 #include "header.h"
+#include "search.c"
 
 // EDUCATIONAL MODULE
 void waitForEnter() {
@@ -360,7 +361,7 @@ void printByTime(reportType reports[], int numReports)
 
 }
 
-void sortByDate(reportType sDate[], int numReports)
+void sortByDate(reportType sDate[], int numReports, int flag)
 {
 	int i, j, min;
 	reportType temp;
@@ -396,10 +397,15 @@ void sortByDate(reportType sDate[], int numReports)
 			sDate[min] = temp;
 		}
 	}
-	printByDate(sDate, numReports);
+
+	if(flag == 1)
+	  printByDate(sDate, numReports);
+	
+	else if(flag == 2)
+	  searchByDate(sDate, numReports);
 }
 
-void sortByMagnitude(reportType sMag[], int numReports)
+void sortByMagnitude(reportType sMag[], int numReports, int flag)
 {  
 	int i, j, min;
     reportType temp;
@@ -418,10 +424,14 @@ void sortByMagnitude(reportType sMag[], int numReports)
           }
       }
 
+	  if(flag == 1)
 	  printByMagnitude(sMag, numReports);
+	
+	else if(flag == 2)
+	  searchByMagnitude(sMag, numReports);
 }
 
-void sortByLocation(reportType sLoc[], int numReports)
+void sortByLocation(reportType sLoc[], int numReports, int flag)
 {
 	int i, j, min;
 	reportType temp;
@@ -440,11 +450,15 @@ void sortByLocation(reportType sLoc[], int numReports)
           }
       }
   
-    printByLocation(sLoc, numReports);
+    if(flag == 1)
+	  printByLocation(sLoc, numReports);
+	
+	else if(flag == 2)
+	  searchByLocation(sLoc, numReports);
 }
 
 
-void sortByTime(reportType sTime[], int numReports)
+void sortByTime(reportType sTime[], int numReports, int flag)
 {
 	int i, j, min;
 	reportType temp;
@@ -473,5 +487,10 @@ void sortByTime(reportType sTime[], int numReports)
 			sTime[min] = temp;
 		}
 	}
-	printByTime(sTime, numReports);
+	if(flag == 1)
+	  printByTime(sTime, numReports);
+	
+	else if(flag == 2)
+	  searchByTime(sTime, numReports);
 } 
+

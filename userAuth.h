@@ -6,6 +6,17 @@ typedef char input[256];       // Temp string for scanning input
 typedef char equivalence[3];   // 1D array for char input
 
 
+// Function declarations
+
+void encryptUser(info *data);
+void encryptPS(info *data);
+void dencryptUser(info *data);
+void dencryptPS(info *data);
+void signUp();
+void logIn();
+void forgotPassword();
+
+
 // Encrypt the string input 
 void letter_encrypter(int *index, input scrabble)
 {
@@ -177,19 +188,6 @@ void letter_encrypter(int *index, input scrabble)
 	default: strcat(scrabble, "\0"); break;
    }
 } 
-
-
-// Function declarations
-
-void encryptUser(info *data);
-void encryptPS(info *data);
-void dencryptUser(info *data);
-void dencryptPS(info *data);
-void signUp();
-void logIn();
-void forgotPassword();
-
-
 
 
 #endif

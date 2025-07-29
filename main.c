@@ -2,6 +2,7 @@
 #include "userAuth.h"
 #include "userAuth.c"
 #include "functions.c"
+#include "../ccprog2-mp/search.h"
 
 void printLanding()
 {
@@ -97,6 +98,7 @@ void printInfoLanding(reportType reports[], int *numReports)
 {
     system("clear || cls");
 	int choice, subChoice;
+    int flag = 0;
     importRecords(reports, numReports);
 
     do
@@ -118,6 +120,7 @@ void printInfoLanding(reportType reports[], int *numReports)
                 break;
 
             case 2:
+                flag = 1;
                 printf("\nSort Reports By:\n");
                 printf("1. Date\n");
                 printf("2. Magnitude\n");
@@ -129,16 +132,16 @@ void printInfoLanding(reportType reports[], int *numReports)
                 switch (subChoice)
                 {
                     case 1:
-                        sortByDate(reports, *numReports);
+                        sortByDate(reports, *numReports, flag);
                         break;                    
                     case 2:
-                        sortByMagnitude(reports, *numReports);
+                        sortByMagnitude(reports, *numReports, flag);
                         break;
                     case 3:
-                        sortByLocation(reports, *numReports);
+                        sortByLocation(reports, *numReports, flag);
                         break;
                     case 4:
-                        sortByTime(reports, *numReports); 
+                        sortByTime(reports, *numReports, flag); 
                         break;
                     default:
                         printf("Invalid choice.\n");
@@ -146,6 +149,7 @@ void printInfoLanding(reportType reports[], int *numReports)
                 break;
 
             case 3:
+                flag = 2;
                 printf("\nSearch Reports By:\n");
                 printf("1. Date\n");
                 printf("2. Magnitude\n");
@@ -157,16 +161,16 @@ void printInfoLanding(reportType reports[], int *numReports)
                 switch (subChoice)
                 {
                     case 1:
-                        // searchByDate(reports, *numReports); TBI
+                         sortByDate(reports, *numReports, flag);
                         break;
                     case 2:
-                        // searchByMagnitude(reports, *numReports); TBI
+                         sortByMagnitude(reports, *numReports, flag); 
                         break;
                     case 3:
-                        // searchByLocation(reports, *numReports); TBI
+                        sortByLocation(reports, *numReports, flag);
                         break;
                     case 4:
-                        // searchByTime(reports, *numReports); TBI
+                        sortByTime(reports, *numReports, flag);
                         break;
                     default:
                         printf("Invalid choice.\n");
