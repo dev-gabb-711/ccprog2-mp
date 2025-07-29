@@ -12,21 +12,52 @@ void waitForEnter() {
 void beforeEarthquake()
 {
     printf("\n");
-    printf("PLACEHOLDER: BEFORE\n\n");
+    printf("\033[0;34mWHAT TO DO BEFORE AN EARTHQUAKE?\033[0m\n\n");
+	printf("1. \e[1mCreate an Emergency Plan:\e[m Make a family emergency plan that includes meeting points, emergency contacts, and communication methods.\n\n");
+	printf("2. \e[1mBuild an Emergency Kit:\e[m Prepare a kit with essentials like water, non-perishable food, flashlight, batteries, first aid supplies, medications, and important documents.\n\n");
+	printf("3. \e[1mSecure Heavy Furniture and Appliances:\e[m Bolt bookshelves, cabinets, TVs, and other heavy items to walls to prevent tipping or falling.\n\n");
+	printf("4. \e[1mKnow How to Turn Off Utilities:\e[m Learn how to shut off gas, water, and electricity in case of damage or leaks after the quake.\n\n");
+	printf("5. \e[1mIdentify Safe Spots Indoors:\e[m Know the safest places in each room, such as under sturdy tables or against interior walls away from windows.\n\n");
+	printf("6. \e[1mPractice ""Drop, Cover, and Hold On"":\e[m Regularly drill this protective action with your family to build muscle memory during an actual quake.\n\n");
+	printf("7. \e[1mRetrofit Your Home:\e[m If possible, strengthen your homes structure by reinforcing foundations and cripple walls, especially in older buildings.\n\n");
+	printf("8. \e[1mCheck Your Insurance Coverage:\e[m Make sure your homeowners or renters insurance includes earthquake coverage, which is usually separate.\n\n");
+	printf("9. \e[1mMake Copies of Important Documents:\e[m Keep copies of IDs, insurance, deeds, and medical records in a waterproof container or cloud storage.\n\n");
+	printf("10. \e[1mStay Informed:\e[m Follow local authorities or seismic agencies for early warning alerts, preparedness tips, and updates.\n\n");
+
     waitForEnter();
 }
 
 void duringEarthquake()
 {
     printf("\n");
-    printf("PLACEHOLDER: DURING\n\n");
+    printf("\033[0;31mWHAT TO DO DURING AN EARTHQUAKE!!\033[0m\n\n");
+	printf("1. \e[1mDrop, Cover, and Hold On:\e[m Immediately get down on your hands and knees, take cover under sturdy furniture, and hold on until the shaking stops.\n\n");
+	printf("2. \e[1mStay Indoors if You Are Inside:\e[m Do not run outside; its safer to stay inside and away from windows and exterior walls.\n\n");
+	printf("3. \e[1mMove Away from Windows and Glass:\e[m Glass can shatter during an earthquake, so get away from windows, mirrors, and other breakables.\n\n");
+	printf("4. \e[1mStay Clear of Heavy or Hanging Objects:\e[m Avoid being near bookshelves, cabinets, ceiling fans, and light fixtures that could fall.\n\n");
+	printf("5. \e[1mUse Your Arm to Shield Your Head and Neck:\e[m If no cover is available, crouch against an interior wall and protect your head and neck with your arms.\n\n");
+	printf("6. \e[1mDo Not Use Elevators:\e[m Power outages or damage may trap you; always use stairs if evacuation becomes necessary afterward.\n\n");
+	printf("7. \e[1mIf You are in Bed, Stay There:\e[m Lie face down and cover your head with a pillow unless you are under a heavy light fixture or ceiling hazard.\n\n");
+	printf("8. \e[1mIf You are Outside, Move to an Open Area:\e[m Stay away from buildings, power lines, streetlights, and trees that could fall or collapse.\n\n");
+	printf("9. \e[1mIf You are Driving, Stop Safely:\e[m Pull over to a clear area away from overpasses, bridges, trees, and power lines, and stay inside the vehicle.\n\n");
+	printf("10. \e[1mStay Calm and Focused:\e[m Panic can lead to poor decisions. Try to stay mentally aware and ready to respond as needed.\n\n");
     waitForEnter();
 }
 
 void afterEarthquake()
 {
     printf("\n");
-    printf("PLACEHOLDER: AFTER\n\n");
+    printf("\033[0;33mWHAT TO DO AFTER AN EARTHQUAKE?\033[0m\n\n");
+	printf("1. \e[1mCheck Yourself and Others for Injuries:\e[m Administer first aid if necessary and seek medical help for serious injuries.\n\n");
+	printf("2. \e[1mBe Ready for Aftershocks:\e[m Move carefully and stay alert, as aftershocks can follow the main quake and cause further damage.\n\n");
+	printf("3. \e[1mInspect Your Home for Hazards:\e[m Check for structural damage, gas leaks, fires, water line breaks, and electrical issues.\n\n");
+	printf("4. \e[1mTurn Off Utilities if Needed:\e[m Shut off gas, electricity, or water if you suspect leaks or damage to avoid further risk.\n\n");
+	printf("5. \e[1mListen to Authorities for Updates:\e[m Use a battery-powered radio or phone to get emergency broadcasts and follow instructions.\n\n");
+	printf("6. \e[1mAvoid Using the Phone Unnecessarily:\e[m Keep phone lines clear for emergency communications.\n\n");
+	printf("7. \e[1mEvacuate if Your Home is Unsafe:\e[m Leave the building if its structurally compromised and go to an open, safe area or emergency shelter.\n\n");
+	printf("8. \e[1mStay Away from Damaged Areas:\e[m Do not re-enter buildings until authorities declare them safe; avoid roads unless necessary.\n\n");
+	printf("9. \e[1mHelp Neighbors if You Can:\e[m Assist those who are injured, elderly, or disabled, especially if emergency services are delayed.\n\n");
+	printf("10. \e[1mDocument Damage for Insurance:\e[m Take photos of structural damage and property loss to help with insurance claims later.\n\n"); 
     waitForEnter();
 }
 
