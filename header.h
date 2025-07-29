@@ -69,7 +69,8 @@ timeType getTime();
 dateType getDate();
 void addReport(reportType reports[], int *numReports);
 void exportRecords(reportType reports[], int numReports);
-// More to be added
+void editReport(reportType reports[], int *numReports);
+void deleteReport(reportType reports[], int *numReports);
 
 // EARTHQUAKE SECTOR INFORMATION HUB
 int importRecords(reportType reports[], int *numReports);
@@ -80,21 +81,30 @@ void printByDate(reportType reports[], int numReports);
 void printByMagnitude(reportType reports[], int numReports);
 void printByLocation(reportType reports[], int numReports);
 void printByTime(reportType reports[], int numReports);
-//More to be added
 
 // Sorting Features
-void sortByDate(reportType sDate[], int numReports, int flag);
-void sortByMagnitude(reportType sMag[], int numReports, int flag);
-void sortByLocation(reportType sLoc[], int numReports, int flag);
-void sortbyTime(reportType sTime[], int numReports, int flag);
+void sortByDate(reportType sDate[], int numReports);
+void sortByMagnitude(reportType sMag[], int numReports);
+void sortByLocation(reportType sLoc[], int numReports);
+void sortByTime(reportType sTime[], int numReports);
 
+// Search Features
+void searchByDate(reportType sDate[], int numReports);
+void searchByMagnitude(reportType sMag[], int numReports);
+void searchByLocation(reportType sLoc[], int numReports);
+void searchByTime(reportType sTime[], int numReports);
+
+// Computational Features
+int frequencyInDateFrame(reportType reports[], int *numReports);
+void mostFrequentLocation(reportType reports[], int *numReports);
+void monthWithMostEarthquakes(reportType reports[], int *numReports);
+void locationMagnitudeCrossTable(reportType reports[], int *numReports);
 
 // EDUCATIONAL MODULE
 void educationalHub();
 void beforeEarthquake();
 void duringEarthquake();
 void afterEarthquake();
-// Content to be added later
 
 
 #endif
