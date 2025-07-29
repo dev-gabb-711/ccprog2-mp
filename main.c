@@ -2,7 +2,6 @@
 #include "userAuth.h"
 #include "userAuth.c"
 #include "functions.c"
-#include "../ccprog2-mp/search.h"
 
 void printLanding()
 {
@@ -19,6 +18,8 @@ void printMainMenu()
     reportType reports[MAX_REPORTS];
     int reportCount = 0;
     int choice;
+
+    importRecords(reports, &reportCount);
 
     do
     {
@@ -46,6 +47,10 @@ void printMainMenu()
                 sleep(3);
                 system("clear || cls");
                 break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+                sleep(1);
+                system("clear || cls");
         }
     } while (choice != 4);
 }
@@ -71,11 +76,11 @@ void printReportLanding(reportType reports[], int *numReports)
                 printf("\n");
                 break;
             case 2:
-                // editReport(reports, *numReports); TBI
+                editReport(reports, numReports);
                 printf("\n");
                 break;
             case 3:
-                // deleteReport(reports, numReports); TBI
+                deleteReport(reports, numReports);
                 printf("\n");
                 break;
             case 4:
@@ -89,6 +94,7 @@ void printReportLanding(reportType reports[], int *numReports)
                 break;
             default:
                 printf("Invalid choice. Please try again.\n");
+                printf("\n");
         }
 
     } while (choice != 5);
@@ -98,8 +104,6 @@ void printInfoLanding(reportType reports[], int *numReports)
 {
     system("clear || cls");
 	int choice, subChoice;
-    int flag = 0;
-    importRecords(reports, numReports);
 
     do
     {
@@ -120,7 +124,6 @@ void printInfoLanding(reportType reports[], int *numReports)
                 break;
 
             case 2:
-                flag = 1;
                 printf("\nSort Reports By:\n");
                 printf("1. Date\n");
                 printf("2. Magnitude\n");
@@ -132,16 +135,24 @@ void printInfoLanding(reportType reports[], int *numReports)
                 switch (subChoice)
                 {
                     case 1:
-                        sortByDate(reports, *numReports, flag);
+                        printf("\nSort by Date\n");
+                        sortByDate(reports, *numReports);
+                        printByDate(reports, *numReports);
                         break;                    
                     case 2:
-                        sortByMagnitude(reports, *numReports, flag);
+                        printf("\nSort by Magnitude\n");
+                        sortByMagnitude(reports, *numReports);
+                        printByMagnitude(reports, *numReports);
                         break;
                     case 3:
-                        sortByLocation(reports, *numReports, flag);
+                        printf("\nSort by Location\n");
+                        sortByLocation(reports, *numReports);
+                        printByLocation(reports, *numReports);
                         break;
                     case 4:
-                        sortByTime(reports, *numReports, flag); 
+                        printf("\nSort by Time\n");
+                        sortByTime(reports, *numReports); 
+                        printByTime(reports, *numReports);
                         break;
                     default:
                         printf("Invalid choice.\n");
@@ -149,7 +160,6 @@ void printInfoLanding(reportType reports[], int *numReports)
                 break;
 
             case 3:
-                flag = 2;
                 printf("\nSearch Reports By:\n");
                 printf("1. Date\n");
                 printf("2. Magnitude\n");
@@ -161,16 +171,20 @@ void printInfoLanding(reportType reports[], int *numReports)
                 switch (subChoice)
                 {
                     case 1:
-                         sortByDate(reports, *numReports, flag);
+                        printf("\nSearch by Date\n");
+                        searchByDate(reports, *numReports);
                         break;
                     case 2:
-                         sortByMagnitude(reports, *numReports, flag); 
+                        printf("\nSearch by Magnitude\n");
+                        searchByMagnitude(reports, *numReports);
                         break;
                     case 3:
-                        sortByLocation(reports, *numReports, flag);
+                        printf("\nSearch by Location\n");
+                        searchByLocation(reports, *numReports);
                         break;
                     case 4:
-                        sortByTime(reports, *numReports, flag);
+                        printf("\nSearch by Time\n");
+                        searchByTime(reports, *numReports);
                         break;
                     default:
                         printf("Invalid choice.\n");
@@ -179,7 +193,7 @@ void printInfoLanding(reportType reports[], int *numReports)
 
             case 4:
                 printf("\nComputation Options:\n");
-                printf("1. Frequency Within Timeframe\n");
+                printf("1. Frequency Within a Timeframe\n");
                 printf("2. Most Frequent Location\n");
                 printf("3. Month with Most Earthquakes\n");
                 printf("4. Location-Magnitude Cross Table\n\n");
@@ -189,16 +203,16 @@ void printInfoLanding(reportType reports[], int *numReports)
                 switch (subChoice)
                 {
                     case 1:
-                        // frequencyWithinTimeframe(reports, *numReports); TBI
+                        frequencyInDateFrame(reports, numReports);
                         break;
                     case 2:
-                        // mostFrequentLocation(reports, *numReports); TBI
+                        mostFrequentLocation(reports, numReports);
                         break;
                     case 3:
-                        // monthWithMostEarthquakes(reports, *numReports); TBI
+                        monthWithMostEarthquakes(reports, numReports); 
                         break;
                     case 4:
-                        // locationMagnitudeCrossTable(reports, *numReports); TBI
+                        locationMagnitudeCrossTable(reports, numReports);
                         break;
                     default:
                         printf("Invalid choice.\n");
@@ -213,6 +227,7 @@ void printInfoLanding(reportType reports[], int *numReports)
 
             default:
                 printf("Invalid choice. Please try again.\n");
+                printf("\n");
         }
     } while (choice != 5);
 }
@@ -221,6 +236,7 @@ int main()
 {
     int choice;
     
+    system("clear || cls");
     printf("Welcome to...\n\n\n");
     sleep(3);
     system("clear || cls");
@@ -246,6 +262,9 @@ int main()
             break;
         default:
             printf("Invalid choice. Please try again.\n");
+            printf("\n");
+            sleep(1);
+            system("clear || cls"); 
         } 
     } while (choice != 4);
 
