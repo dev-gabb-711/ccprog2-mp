@@ -283,7 +283,6 @@ void logIn()  // Required to use the encrypted string
 			if (found == 1)
 			{
 				sleep(3);
-				printf("\n");
 				printMainMenu();
 			}
 			else
