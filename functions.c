@@ -279,8 +279,6 @@ void viewRecords(reportType reports[], int *numReports)
             printf("Magnitude: %.1f\n", reports[i].magnitude);
             printf("Location: %s\n", reports[i].location);
             printf("Details: %s\n", reports[i].details);
-			printf("DEBUG DATE: %d/%d/%d\n", reports[i].date.month, reports[i].date.day, reports[i].date.year);
-			printf("DEBUG TIME: %d:%d\n", reports[i].time.hour, reports[i].time.minute);
             printf("\n========================================\n");
             totalMagnitude = totalMagnitude + reports[i].magnitude;
             
@@ -601,7 +599,7 @@ void searchByMagnitude(reportType sMag[], int numReports)
 	}
 	else
 	{
-		printByDate(magIndex, count); // Print the found magnitudes
+		printByMagnitude(magIndex, count); // Print the found magnitudes
 	}
 }
 
@@ -632,7 +630,7 @@ void searchByLocation(reportType sLoc[], int numReports)
 	}
 	else
 	{
-		printByDate(locIndex, count); // Print the found locations
+		printByLocation(locIndex, count); // Print the found locations
 	}
 }
 
@@ -662,7 +660,7 @@ void searchByTime(reportType sTime[], int numReports)
 	}
 	else
 	{
-		printByDate(timeIndex, count); // Print the found times
+		printByTime(timeIndex, count); // Print the found times
 	}
 }
 
